@@ -1,3 +1,6 @@
+const INSTAGRAM_MAX_WORDS = 2200;
+const X_MAX_WORDS = 280;
+
 type StatTrackerProps = {
   inputText: string;
 };
@@ -12,8 +15,16 @@ export default function StatTracker({ inputText }: StatTrackerProps) {
     <section className="stats">
       <Stat number={numberOfWords} label="Words" />
       <Stat number={numberOfCharacters} label="Characters" />
-      <Stat number={numberOfCharacters} label="Instagram" maxWords={2200} />
-      <Stat number={numberOfCharacters} label="X (Twitter)" maxWords={280} />
+      <Stat
+        number={numberOfCharacters}
+        label="Instagram"
+        maxWords={INSTAGRAM_MAX_WORDS}
+      />
+      <Stat
+        number={numberOfCharacters}
+        label="X (Twitter)"
+        maxWords={X_MAX_WORDS}
+      />
     </section>
   );
 }
