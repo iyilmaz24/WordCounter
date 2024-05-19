@@ -1,10 +1,19 @@
-export default function StatTracker() {
+type StatTrackerProps = {
+  inputText: string;
+};
+
+export default function StatTracker({ inputText }: StatTrackerProps) {
+  const numberOfCharacters = inputText.length;
+  const numberOfWords = inputText
+    .split(/\s/)
+    .filter((word) => word !== "").length;
+
   return (
     <section className="stats">
-      <Stat number={0} label="Words" />
-      <Stat number={0} label="Characters" />
-      <Stat number={0} label="X / Twitter" />
-      <Stat number={0} label="Instagram" />
+      <Stat number={numberOfWords} label="Words" />
+      <Stat number={numberOfCharacters} label="Characters" />
+      <Stat number={numberOfCharacters} label="Instagram" maxWords={2200} />
+      <Stat number={numberOfCharacters} label="X (Twitter)" maxWords={280} />
     </section>
   );
 }
@@ -12,12 +21,23 @@ export default function StatTracker() {
 type StatProps = {
   number: number;
   label: string;
+  maxWords?: number;
 };
 
-function Stat({ number, label }: StatProps) {
+function Stat({ number, label, maxWords }: StatProps) {
   return (
     <section className="stat">
-      <span className="stat__number">{number}</span>
+      {maxWords ? (
+        <span
+          className={`stat__number ${
+            number > maxWords ? "stat__number--limit" : ""
+          }`}
+        >
+          {number} / {maxWords}
+        </span>
+      ) : (
+        <span className="stat__number">{number}</span>
+      )}
       <h2 className="second-heading">{label}</h2>
     </section>
   );

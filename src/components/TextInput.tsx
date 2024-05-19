@@ -1,8 +1,15 @@
 import { useState } from "react";
 import Warning from "./Warning";
 
-export default function TextInput() {
-  const [text, setText] = useState("");
+type TextInputProps = {
+  text: string;
+  setText: (text: string) => void;
+};
+
+export default function TextInput({
+  text,
+  setText,
+}: TextInputProps): JSX.Element {
   const [warningText, setWarningText] = useState("");
 
   const handleText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
