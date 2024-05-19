@@ -1,3 +1,7 @@
 export default function PageTitle() {
-  return <h1>TotalWordCount</h1>;
+  return (
+    <h1 className="first-heading">
+      Total<span className="first-heading--thin">WordCount</span>
+    </h1>
+  );
 }

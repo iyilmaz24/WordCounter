@@ -3,7 +3,7 @@ import TextInput from "./TextInput";
 
 export default function Container() {
   return (
-    <main>
+    <main className="container">
       <TextInput />
       <StatTracker />
     </main>

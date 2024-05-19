@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <>
-      <footer>
+      <footer className="footer">
         <small>
           <p>TotalWordCount © 2024</p>
         </small>
